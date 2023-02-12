@@ -20,7 +20,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
   @ExceptionHandler(AppException.class)
   public ResponseEntity<Map<String, Object>> appException(AppException ex, WebRequest request) {
     Map<String, Object> body = errorAttributes.getErrorAttributes(request, ex.getOptions());
-    HttpStatus status = (HttpStatus) ex.getStatusCode();
+    HttpStatus status = ex.getStatus();
     body.put("status", status.value());
     body.put("error", status.getReasonPhrase());
     return ResponseEntity.status(status).body(body);

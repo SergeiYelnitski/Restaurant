@@ -2,11 +2,12 @@ package com.example.restaurant.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
 import lombok.*;
 import com.example.restaurant.util.HasId;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.util.ProxyUtils;
+
+import javax.persistence.*;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)

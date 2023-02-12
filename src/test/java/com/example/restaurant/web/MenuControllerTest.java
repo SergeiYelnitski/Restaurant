@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.time.LocalDate;
 import java.util.List;
 
-import static com.example.restaurant.web.VotingRestController.REST_URL;
+import static com.example.restaurant.web.MenuRestController.REST_URL;
 import static com.example.restaurant.web.TestData.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

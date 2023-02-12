@@ -2,12 +2,12 @@ package com.example.restaurant.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
+
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.util.CollectionUtils;
-
+import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serial;
 import java.io.Serializable;
