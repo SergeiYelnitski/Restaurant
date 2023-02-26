@@ -1,6 +1,6 @@
 package com.example.restaurant.util;
 
-import com.example.restaurant.exception.IllegalRequestDataException;
+import com.example.restaurant.service.exception.IllegalRequestDataException;
 
 public class ValidationUtil {
 

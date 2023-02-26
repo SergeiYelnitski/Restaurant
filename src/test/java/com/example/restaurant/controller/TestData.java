@@ -1,4 +1,4 @@
-package com.example.restaurant.web;
+package com.example.restaurant.controller;
 
 
 

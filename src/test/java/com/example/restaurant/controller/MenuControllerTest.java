@@ -1,6 +1,6 @@
-package com.example.restaurant.web;
+package com.example.restaurant.controller;
 
-import com.example.restaurant.crud.CrudMenuRepository;
+import com.example.restaurant.repository.MenuRepository;
 import com.example.restaurant.model.Dish;
 import com.example.restaurant.model.Menu;
 import com.example.restaurant.util.JsonUtil;
@@ -14,14 +14,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.time.LocalDate;
 import java.util.List;
 
-import static com.example.restaurant.web.MenuRestController.REST_URL;
-import static com.example.restaurant.web.TestData.*;
+import static com.example.restaurant.controller.MenuController.REST_URL;
+import static com.example.restaurant.controller.TestData.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class MenuControllerTest extends AbstractControllerTest{
   @Autowired
-  private CrudMenuRepository repository;
+  private MenuRepository repository;
 
   @Test
   @WithUserDetails(value = ADMIN_MAIL)

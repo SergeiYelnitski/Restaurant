@@ -1,4 +1,4 @@
-package com.example.restaurant.crud;
+package com.example.restaurant.repository;
 
 import com.example.restaurant.model.Restaurant;
 import org.springframework.transaction.annotation.Transactional;
@@ -6,10 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public interface CrudRestaurantRepository extends BaseRepository<Restaurant> {
+public interface RestaurantRepository extends BaseRepository<Restaurant> {
 
   List<Restaurant> findAll();
 
-  Restaurant findByAdmin_Id(Integer id);
+  Restaurant findByAdminId(Integer id);
 
 }

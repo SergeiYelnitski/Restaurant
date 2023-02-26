@@ -1,7 +1,7 @@
-package com.example.restaurant.web;
+package com.example.restaurant.controller;
 
 import lombok.AllArgsConstructor;
-import com.example.restaurant.exception.AppException;
+import com.example.restaurant.service.exception.AppException;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestControllerAdvice
 @AllArgsConstructor
-public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+public class ControllerAdvisor extends ResponseEntityExceptionHandler {
   private final ErrorAttributes errorAttributes;
 
   @ExceptionHandler(AppException.class)

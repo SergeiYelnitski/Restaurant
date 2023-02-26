@@ -1,16 +1,14 @@
-package com.example.restaurant.web;
+package com.example.restaurant.service.impl;
 
-import com.example.restaurant.crud.CrudVoteRepository;
-import com.example.restaurant.exception.IllegalRequestDataException;
+import com.example.restaurant.model.AuthUser;
 import com.example.restaurant.model.Vote;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import com.example.restaurant.repository.VoteRepository;
+import com.example.restaurant.service.VotingService;
+import com.example.restaurant.service.exception.IllegalRequestDataException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.MediaType;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,20 +17,17 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping (value = VotingRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@Service
 @Slf4j
 @AllArgsConstructor
-@Tag(name = "Voting Controller", description = "The necessary role is user.")
-public class VotingRestController {
-  static final String REST_URL = "/api/voting";
+@Transactional(readOnly = true)
+public class VotingServiceImpl implements VotingService {
 
-  private final CrudVoteRepository voteRepository;
+  private final VoteRepository voteRepository;
 
+  @Override
   @Transactional
-  @PostMapping("/{id}")
-  @Operation(summary = "Vote")
-  public void voting( @AuthenticationPrincipal AuthUser authUser, @PathVariable int id) {
+  public void voting(AuthUser authUser, int id) {
     log.info("voting restaurant id {}", id);
 
     if(!LocalTime.now().isAfter(LocalTime.of(11, 0))){
@@ -47,8 +42,7 @@ public class VotingRestController {
     else throw new IllegalRequestDataException("Voting is over!");
   }
 
-  @GetMapping("/vote")
-  @Operation(summary = "Get the current votes")
+  @Override
   public List<Vote> getCurrentVoices() {
     return voteRepository
         .findAllByDateTimeGreaterThanEqualAndDateTimeLessThanEqualOrderByDateTimeDesc(

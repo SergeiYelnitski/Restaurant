@@ -1,4 +1,4 @@
-package com.example.restaurant.to;
+package com.example.restaurant.dto;
 
 import com.example.restaurant.util.HasId;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Data
-public abstract class BaseTo implements HasId {
+public abstract class BaseDTO implements HasId {
   @Schema(accessMode = Schema.AccessMode.READ_ONLY)
   protected Integer id;
 

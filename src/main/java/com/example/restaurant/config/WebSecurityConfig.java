@@ -1,9 +1,9 @@
 package com.example.restaurant.config;
 
-import com.example.restaurant.crud.CrudUserRepository;
+import com.example.restaurant.repository.UserRepository;
 import com.example.restaurant.model.Role;
 import com.example.restaurant.model.User;
-import com.example.restaurant.web.AuthUser;
+import com.example.restaurant.model.AuthUser;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-  private final CrudUserRepository userRepository;
+  private final UserRepository userRepository;
 
   @Bean
   public UserDetailsService userDetailsService() {

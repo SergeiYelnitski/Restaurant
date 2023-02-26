@@ -1,4 +1,4 @@
-package com.example.restaurant.crud;
+package com.example.restaurant.repository;
 
 import com.example.restaurant.model.Menu;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface CrudMenuRepository extends BaseRepository<Menu> {
+public interface MenuRepository extends BaseRepository<Menu> {
 
   Menu getByDateAndRestaurantId(LocalDate date, Integer restaurantId);
 

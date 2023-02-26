@@ -1,6 +1,6 @@
-package com.example.restaurant.web;
+package com.example.restaurant.controller;
 
-import com.example.restaurant.crud.CrudRestaurantRepository;
+import com.example.restaurant.repository.RestaurantRepository;
 import com.example.restaurant.model.Restaurant;
 import com.example.restaurant.util.JsonUtil;
 import org.junit.jupiter.api.Test;
@@ -12,15 +12,15 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
 
-import static com.example.restaurant.web.RestaurantRestController.REST_URL;
-import static com.example.restaurant.web.TestData.*;
+import static com.example.restaurant.controller.RestaurantController.REST_URL;
+import static com.example.restaurant.controller.TestData.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class RestaurantControllerTest extends AbstractControllerTest {
   @Autowired
-  private CrudRestaurantRepository repository;
+  private RestaurantRepository repository;
 
   @Test
   @WithUserDetails(value = ADMIN_MAIL)

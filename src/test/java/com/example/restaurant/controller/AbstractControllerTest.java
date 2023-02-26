@@ -1,4 +1,4 @@
-package com.example.restaurant.web;
+package com.example.restaurant.controller;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

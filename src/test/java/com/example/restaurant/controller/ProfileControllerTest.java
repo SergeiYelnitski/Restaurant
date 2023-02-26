@@ -1,9 +1,9 @@
-package com.example.restaurant.web;
+package com.example.restaurant.controller;
 
 
-import com.example.restaurant.crud.CrudUserRepository;
+import com.example.restaurant.repository.UserRepository;
 import com.example.restaurant.model.User;
-import com.example.restaurant.to.UserTo;
+import com.example.restaurant.dto.UserDTO;
 import com.example.restaurant.util.JsonUtil;
 import com.example.restaurant.util.UserUtil;
 import org.junit.jupiter.api.Test;
@@ -13,8 +13,8 @@ import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static com.example.restaurant.web.ProfileRestController.REST_URL;
-import static com.example.restaurant.web.TestData.*;
+import static com.example.restaurant.controller.ProfileController.REST_URL;
+import static com.example.restaurant.controller.TestData.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ProfileControllerTest extends AbstractControllerTest {
 
   @Autowired
-  private CrudUserRepository repository;
+  private UserRepository repository;
 
   @Test
   @WithUserDetails(value = USER_MAIL)
@@ -41,7 +41,7 @@ class ProfileControllerTest extends AbstractControllerTest {
 
   @Test
   void register() throws Exception {
-    UserTo newTo = new UserTo(null, "newName", "newemail@ya.ru", "newPassword");
+    UserDTO newTo = new UserDTO(null, "newName", "newemail@ya.ru", "newPassword");
     User newUser = UserUtil.createNewFromTo(newTo);
     ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
         .contentType(MediaType.APPLICATION_JSON)
@@ -59,7 +59,7 @@ class ProfileControllerTest extends AbstractControllerTest {
   @Test
   @WithUserDetails(value = USER_MAIL)
   void update() throws Exception {
-    UserTo updatedTo = new UserTo(null, "newName", USER_MAIL, "newPassword");
+    UserDTO updatedTo = new UserDTO(null, "newName", USER_MAIL, "newPassword");
     perform(MockMvcRequestBuilders.put(REST_URL).contentType(MediaType.APPLICATION_JSON)
         .content(JsonUtil.writeValue(updatedTo)))
         .andDo(print())
@@ -70,7 +70,7 @@ class ProfileControllerTest extends AbstractControllerTest {
 
   @Test
   void registerInvalid() throws Exception {
-    UserTo newTo = new UserTo(null, null, null, null);
+    UserDTO newTo = new UserDTO(null, null, null, null);
     perform(MockMvcRequestBuilders.post(REST_URL)
         .contentType(MediaType.APPLICATION_JSON)
         .content(JsonUtil.writeValue(newTo)))
@@ -81,7 +81,7 @@ class ProfileControllerTest extends AbstractControllerTest {
   @Test
   @WithUserDetails(value = USER_MAIL)
   void updateInvalid() throws Exception {
-    UserTo updatedTo = new UserTo(null, null, "password", null);
+    UserDTO updatedTo = new UserDTO(null, null, "password", null);
     perform(MockMvcRequestBuilders.put(REST_URL)
         .contentType(MediaType.APPLICATION_JSON)
         .content(JsonUtil.writeValue(updatedTo)))
@@ -92,7 +92,7 @@ class ProfileControllerTest extends AbstractControllerTest {
   @Test
   @WithUserDetails(value = USER_MAIL)
   void updateDuplicate() throws Exception {
-    UserTo updatedTo = new UserTo(null, "newName", ADMIN_MAIL, "newPassword");
+    UserDTO updatedTo = new UserDTO(null, "newName", ADMIN_MAIL, "newPassword");
     perform(MockMvcRequestBuilders.put(REST_URL).contentType(MediaType.APPLICATION_JSON)
         .content(JsonUtil.writeValue(updatedTo)))
         .andDo(print())

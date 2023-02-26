@@ -1,4 +1,4 @@
-package com.example.restaurant.web;
+package com.example.restaurant.controller;
 
 import com.example.restaurant.util.JsonUtil;
 import org.springframework.test.web.servlet.MvcResult;

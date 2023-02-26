@@ -1,4 +1,4 @@
-package com.example.restaurant.web;
+package com.example.restaurant.model;
 
 import com.example.restaurant.model.User;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.restaurant.to;
+package com.example.restaurant.dto;
 
 import com.example.restaurant.util.HasId;
 import lombok.EqualsAndHashCode;
@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Value
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class UserTo extends NamedTo implements HasId {
+public class UserDTO extends NamedDTO implements HasId {
   @Email
   @NotBlank
   @Size(max = 100)
@@ -22,7 +22,7 @@ public class UserTo extends NamedTo implements HasId {
   @Size(min = 5, max = 32)
   String password;
 
-  public UserTo(Integer id, String name, String email, String password) {
+  public UserDTO(Integer id, String name, String email, String password) {
     super(id, name);
     this.email = email;
     this.password = password;
