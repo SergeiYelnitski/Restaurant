@@ -19,7 +19,7 @@ Voting service for deciding where to have lunch.
 - #### Manually
 
     * [Download](https://github.com/SergeiYelnitski/Restaurant/archive/refs/heads/main.zip) and unzip the project or [clone](https://github.com/SergeiYelnitski/Restaurant.git).
-    * Just run GraduationApplication.
+    * Just run RestaurantApplication.
 
 - #### via [Docker](https://www.docker.com)
     * Run: <pre>docker run -p 8080:8080 sergeiyelnitski/sergeiyelnitski:restaurant</pre>
